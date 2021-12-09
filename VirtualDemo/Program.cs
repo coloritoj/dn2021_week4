@@ -3,8 +3,10 @@ using System.Collections.Generic;
 
 namespace VirtualDemo
 {
-    class Car
+    abstract class Car
     {
+        // The word "abstract" means they can't create an instance of this class; they can only create classes DERIVED from it.
+
         public string Make;
         public string Model;
         public int GasAmount;
