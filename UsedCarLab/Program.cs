@@ -660,15 +660,15 @@ namespace UsedCarLab
                     }
                     else if (searchOption == "2")
                     {
-                        // DID NOT COMPLETE THIS CHALLENGE (Search by model)
+                        // DID NOT COMPLETE THIS CHALLENGE (Search by year)
                     }
                     else if (searchOption == "3")
                     {
-                        // DID NOT COMPLETE THIS CHALLENGE (Search by model)
+                        // DID NOT COMPLETE THIS CHALLENGE (Search by price)
                     }
                     else if (searchOption == "4")
                     {
-                        // DID NOT COMPLETE THIS CHALLENGE (Search by model)
+                        // DID NOT COMPLETE THIS CHALLENGE (Search by new/used)
                     }
                 }
                 else if (userCommand == "5")
