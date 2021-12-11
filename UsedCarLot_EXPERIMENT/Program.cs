@@ -410,7 +410,6 @@ namespace UsedCarLot_EXPERIMENT
             }
             else if (userDecision == "2")
             {
-                // CREATE METHOD AND PUT HERE (YEAR)
                 userDecision = SearchByYear(myCarLot);
             }
             else if (userDecision == "3")
@@ -419,7 +418,7 @@ namespace UsedCarLot_EXPERIMENT
             }
             else if (userDecision == "4")
             {
-                // CREATE METHOD AND PUT HERE (NEW/USED)
+                userDecision = SearchByNewOrUsed(myCarLot);
             }
 
             return userDecision;
@@ -647,7 +646,6 @@ namespace UsedCarLot_EXPERIMENT
             } while (validDecision == false);
 
             return userDecision;
-
         }
 
         static bool PriceMatchExists(CarLot myCarLot, decimal userPrice)
@@ -663,6 +661,166 @@ namespace UsedCarLot_EXPERIMENT
             }
 
             if (countMatchesFound > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        static string SearchByNewOrUsed(CarLot myCarLot)
+        {
+            Console.Write("Would you like to search by [N]ew or [U]sed?: ");
+            string userSearch = Console.ReadLine().ToLower();
+            bool validCommand;
+
+            do
+            {
+                validCommand = IsValidCommandNU(userSearch);
+
+                if (validCommand == true)
+                {
+                    if (userSearch == "n")
+                    {
+                        Console.WriteLine("\nHere is our list of new vehicles:");
+
+                        for (int i = 0; i < myCarLot.carList.Count; i++)
+                        {
+                            if (myCarLot.carList[i].ToString().Contains("NEW"))
+                            {
+                                Console.WriteLine(myCarLot.carList[i]);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nHere is our list of used vehicles:");
+
+                        for (int i = 0; i < myCarLot.carList.Count; i++)
+                        {
+                            if (myCarLot.carList[i].ToString().Contains("USED"))
+                            {
+                                Console.WriteLine(myCarLot.carList[i]);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    Console.Write("I'm sorry, but that was not a valid command. Would you like to search by [N]ew or [U]sed?: ");
+                    userSearch = Console.ReadLine().ToLower();
+                    validCommand = IsValidCommandNU(userSearch);
+
+                    do
+                    {
+                        if (validCommand == true)
+                        {
+                            if (userSearch == "n")
+                            {
+                                Console.WriteLine("\nHere is our list of new vehicles:");
+
+                                for (int i = 0; i < myCarLot.carList.Count; i++)
+                                {
+                                    if (myCarLot.carList[i].ToString().Contains("NEW"))
+                                    {
+                                        Console.WriteLine(myCarLot.carList[i]);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Console.WriteLine("\nHere is our list of used vehicles:");
+
+                                for (int i = 0; i < myCarLot.carList.Count; i++)
+                                {
+                                    if (myCarLot.carList[i].ToString().Contains("USED"))
+                                    {
+                                        Console.WriteLine(myCarLot.carList[i]);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.Write("I'm sorry, but that was not a valid command. Would you like to search by [N]ew or [U]sed?: ");
+                            userSearch = Console.ReadLine().ToLower();
+                            validCommand = IsValidCommandNU(userSearch);
+
+                            if (validCommand == true)
+                            {
+                                if (userSearch == "n")
+                                {
+                                    Console.WriteLine("\nHere is our list of new vehicles:");
+
+                                    for (int i = 0; i < myCarLot.carList.Count; i++)
+                                    {
+                                        if (myCarLot.carList[i].ToString().Contains("NEW"))
+                                        {
+                                            Console.WriteLine(myCarLot.carList[i]);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    Console.WriteLine("\nHere is our list of used vehicles:");
+
+                                    for (int i = 0; i < myCarLot.carList.Count; i++)
+                                    {
+                                        if (myCarLot.carList[i].ToString().Contains("USED"))
+                                        {
+                                            Console.WriteLine(myCarLot.carList[i]);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } while (validCommand == false);
+                }
+            } while (validCommand == false);
+
+            Console.WriteLine("\n=========================");
+            Console.WriteLine("MENU OPTIONS");
+            Console.WriteLine("[M]ain menu");
+            Console.WriteLine("[E]xit application");
+            Console.WriteLine("=========================");
+            Console.Write("\nWhat would you like to do?: ");
+            string userDecision = Console.ReadLine().ToLower();
+            bool validDecision;
+
+            do
+            {
+                if (userDecision == "m" || userDecision == "e")
+                {
+                    validDecision = true;
+                }
+                else
+                {
+                    validDecision = false;
+                }
+
+                while (validDecision == false)
+                {
+                    Console.Write("Sorry, that was not a valid menu option. Please try again: ");
+                    userDecision = Console.ReadLine().ToLower();
+                    if (userDecision == "m" || userDecision == "e")
+                    {
+                        validDecision = true;
+                    }
+                    else
+                    {
+                        validDecision = false;
+                    }
+                }
+            } while (validDecision == false);
+
+            return userDecision;
+        }
+
+        static bool IsValidCommandNU(string entry)
+        {
+            if (entry == "n" || entry == "u")
             {
                 return true;
             }
@@ -719,7 +877,6 @@ namespace UsedCarLot_EXPERIMENT
                 }
                 else if (userDecision == "4")
                 {
-                    // NEED TO DO THIS
                     userDecision = RunMainMenuOption4(myCarLot);
                     continueApplication = ContinueApplication(userDecision);
                 }
